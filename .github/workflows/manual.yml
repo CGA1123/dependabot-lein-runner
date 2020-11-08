@@ -30,6 +30,6 @@ jobs:
         run: ./run.sh
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          GITHUB_REPO: ${{ matrix.project }}
+          GITHUB_REPO: ${{ github.event.inputs.project }}
           GITHUB_MAVEN_REGISTRIES: ""
           DIRECTORY_PATH: ${{ github.event.inputs.directory }}
