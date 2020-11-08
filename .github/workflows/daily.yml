@@ -1,5 +1,6 @@
 name: Daily Scheduled Bump
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 9 * * *'
 
@@ -11,12 +12,9 @@ jobs:
       fail-fast: false
       matrix:
         project:
-          - CGA1123/dependabot-core
+          - CGA1123/dependabot-lein-dummy
         directory:
           - /
-        include:
-          - project: CGA1123/dependabot-core
-            directory: /lein/helpers
 
     steps:
       - name: Checkout code
