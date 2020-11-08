@@ -59,6 +59,7 @@ ARG CACHE
 RUN echo $CACHE
 RUN git clone --branch leiningen https://github.com/CGA1123/dependabot-core /home/app/dependabot-core
 WORKDIR /home/app/dependabot-core
+RUN echo $(git rev-parse --short HEAD)
 
 # Install native clojure helper
 RUN mkdir -p /opt/lein/helpers
