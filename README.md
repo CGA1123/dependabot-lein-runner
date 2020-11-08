@@ -12,6 +12,7 @@ It uses the following environment variables:
 - `GITHUB_REPO` the repo to update in `owner/repo` format
 - `GITHUB_MAVEN_REGISTRIES` any github packages maven repository urls for private packages (comma separated)
 - `GITHUB_TOKEN` the github access token to use to both check the private repositories and create pull requests
+  - The Github Actions defined in this repo set this to `secrets.PERSONAL_TOKEN` in order to authenticate with `ghcr.io`, which doesn't work using the `github.token` provisioned for actions runners!
 
 [`ghcr.io/cga1123/dependabot-lein-runner`]: https://github.com/users/CGA1123/packages/container/package/dependabot-lein-runner
 [`dependabot/dependabot-core`]: https://github.com/dependabot/dependabot-core
