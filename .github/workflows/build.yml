@@ -35,4 +35,4 @@ jobs:
           cache-to: type=inline
           tags: |
             ghcr.io/cga1123/dependabot-lein-runner:${{ github.sha }}
-            ghrc.io/cga1123/dependabot-lein-runner:latest
+            ghcr.io/cga1123/dependabot-lein-runner:latest
