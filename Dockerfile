@@ -55,9 +55,7 @@ ENV PATH="$PATH:/usr/local/lein/bin" \
   LEIN_SNAPSHOTS_IN_RELEASE="yes"
 
 # Get dependabot source
-ARG CACHE
-RUN echo $CACHE
-RUN git clone --branch leiningen https://github.com/CGA1123/dependabot-core /home/app/dependabot-core
+RUN git clone --branch leiningen https://github.com/CGA1123/dependabot-core /home/app/dependabot-core # :buildcache:
 WORKDIR /home/app/dependabot-core
 RUN echo $(git rev-parse --short HEAD)
 
