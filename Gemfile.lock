@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/CGA1123/dependabot-core.git
-  revision: 7659f473d00163213f3239736deec0b5e87cb175
+  revision: 0692bf1ea3c1601ef49b1a83b431c2773fc64c68
+  ref: 0692bf1ea3c1601ef49b1a83b431c2773fc64c68
   branch: leiningen
   glob: */*.gemspec
   specs:
