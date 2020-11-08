@@ -1,0 +1,38 @@
+name: Daily Scheduled Bump
+on:
+  schedule:
+    - cron: '30 9 * * *'
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - CGA1123/dependabot-core
+        directory:
+          - /
+        include:
+          - project: CGA1123/dependabot-core
+            directory: /lein/helpers
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: CGA1123
+          password: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Run for ${{ matrix.project }}
+        run: ./run.sh
+        env:
+          GITHUB_TOKEN=${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_REPO=${{ matrix.project }}
+          DIRECTORY_PATH=${{ matrix.directory }}
+          GITHUB_MAVEN_REGISTRIES=""

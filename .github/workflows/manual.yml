@@ -1,0 +1,35 @@
+name: Manual Bump
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'the project to run updates agains (username/repo)'
+        required: true
+
+      directory:
+        description: 'Path to look for dependency files'
+        required: true
+        default: '/'
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: CGA1123
+          password: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Run for ${{ github.event.inputs.project }}
+        run: ./run.sh
+        env:
+          GITHUB_TOKEN=${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_REPO=${{ matrix.project }}
+          GITHUB_MAVEN_REGISTRIES=""
+          DIRECTORY_PATH=${{ github.event.inputs.directory }}
