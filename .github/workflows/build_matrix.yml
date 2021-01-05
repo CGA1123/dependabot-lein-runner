@@ -1,0 +1,21 @@
+name: Bump Matrix (example)
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projects:
+          - repository: CGA1123/dependabot-lein-runner
+            directory: '/dummy'
+
+    steps:
+      - uses: CGA1123/dependabot-lein-runner@main
+        with:
+          token: ${{ github.token }}
+          repository: ${{ matrix.projects.repository }}
+          directory: ${{ matrix.projects.directory }}
