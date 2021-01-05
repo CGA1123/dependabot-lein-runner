@@ -9,10 +9,10 @@ updates on `lein` projects. The image is pushed to
 [`ghcr.io/cga1123/dependabot-lein-runner`].
 
 It uses the following variables:
-- `token` / `GITHUB_TOKEN` the github access token to use to both check the private repositories and create pull requests (may be the GitHub Actions token or a personal access token)
-- `registries` / `GITHUB_MAVEN_REGISTRIES` any github packages maven repository urls for private packages (comma separated, default `''`)
-- `directory` / `GITHUB_PATH` the directory to look for `project.clj` within (default `'/'`)
-- `repository` / `GITHUB_REPO` the repo to update in `owner/repo` format
+- `token` the github access token to use to both check the private repositories and create pull requests (may be the GitHub Actions token or a personal access token)
+- `registries` any github packages maven repository urls for private packages (comma separated, default `''`)
+- `directory` the directory to look for `project.clj` within (default `'/'`)
+- `repository` the repo to update in `owner/repo` format
 
 Example daily workflow within for a single repo:
 
