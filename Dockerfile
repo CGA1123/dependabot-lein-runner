@@ -62,7 +62,6 @@ RUN echo $(git rev-parse --short HEAD)
 # Install native clojure helper
 RUN mkdir -p /opt/lein/helpers
 RUN cp -R ./lein/helpers /opt/lein/
-RUN rm -rf /home/app/dependabot-core
 
 ENV DEPENDABOT_NATIVE_HELPERS_PATH="/opt"
 
