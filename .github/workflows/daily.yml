@@ -30,7 +30,7 @@ jobs:
       - name: Run for ${{ matrix.project }}
         run: ./run.sh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPO: ${{ matrix.project }}
           DIRECTORY_PATH: ${{ matrix.directory }}
           GITHUB_MAVEN_REGISTRIES: ''
