@@ -1,0 +1,34 @@
+name: 'dependabot-lein-runner'
+description: 'Run dependabot for Leiningen (Clojure)'
+inputs:
+  token:
+    description: 'GitHub Token for access to GitHub Maven repositories and PR creation'
+    required: true
+
+  repository:
+    descriptions: 'The GitHub repository to run against, the token must have access to open PRs'
+    required: true
+
+  registries:
+    description: 'GitHub Packages Maven registry URLs (comma separated)'
+    required: false
+    default: ''
+
+  directory:
+    description: 'Base directory to search for dependency files (project.clj)'
+    required: false
+    default: '/'
+
+branding:
+  icon: 'arrow-up-circle'
+  color: 'blue'
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/cga1123/dependabot-lein-runner:latest'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.registries }}
+    - ${{ inputs.directory }}
+    - ${{ inputs.repository }}
+

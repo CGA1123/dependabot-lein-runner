@@ -73,3 +73,7 @@ COPY . /home/app/dependabot-lein-runner
 WORKDIR /home/app/dependabot-lein-runner
 
 RUN bundle install --path vendor
+
+COPY ./entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

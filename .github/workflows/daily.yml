@@ -10,27 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        project:
-          - CGA1123/dependabot-lein-dummy
-        directory:
-          - /
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Login to Registry
-        uses: docker/login-action@v1
+      - uses: ./
         with:
-          registry: ghcr.io
-          username: CGA1123
-          password: ${{ secrets.PERSONAL_TOKEN }}
-
-      - name: Run for ${{ matrix.project }}
-        run: ./run.sh
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          GITHUB_REPO: ${{ matrix.project }}
-          DIRECTORY_PATH: ${{ matrix.directory }}
-          GITHUB_MAVEN_REGISTRIES: ''
+          token: ${{ github.token }}
+          directory: '/dummy'
+          repository: ${{ github.repository }}
